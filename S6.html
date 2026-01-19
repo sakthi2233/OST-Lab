@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dialog Box in JavaScript</title>
+</head>
+<body>
+
+<button onclick="checkVoter()">Check Voter Eligibility</button>
+
+<script>
+function checkVoter() {
+
+    let name = prompt("Enter your name:");
+    if (name === null) {
+        alert("Input cancelled");
+        return;
+    }
+
+    let age = prompt("Enter your age:");
+    age = Number(age);
+
+    let confirmCheck = confirm("Do you want to check voter eligibility?");
+
+    if (confirmCheck) {
+        if (age >= 18) {
+            alert("Hello " + name + "\nYou are eligible to vote");
+        } else {
+            alert("Hello " + name + "\nYou are not eligible to vote");
+        }
+    } else {
+        alert("Operation cancelled");
+    }
+}
+</script>
+
+</body>
+</html>

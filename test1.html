@@ -1,0 +1,42 @@
+<html>
+    <head><title>Event handling</title></head>
+    <style>
+        #box{
+            width:200px;
+            height:150px;
+            background-color: blue;
+        }
+    </style>
+    <body>
+        <div id=box>
+            <input id= "onmouseclick()">      
+            <input id= "ondbmouseclick()">  
+            <input id= "onmouseup()">  
+            <input id= "onkeyboarddown()">  <br>
+            <input id= "onkeyboardup()">  <br>
+            <input id= "onkeyboardover()">    <br>     
+            Hover over me
+        </div>    
+    <script>
+        function onmouseclick(){
+            mouseclick.innerHTML="red";
+        }
+        function ondbmouseclick(){
+            dbmouseclick.innerHTML="green";
+        }
+        function onmouseup(){
+            onmouseup.innerHTML="yellow";
+        }
+        function onkeyboarddown(){
+            onkeyboarddown.innerHTML="orange";
+        }
+        function onkeyboardup(){
+            onkeyboardup.innerHTML="pink";
+        }
+        function onkeyboardover(){
+            onkeyboardover.innerHTML="purple";
+        }
+    </script>
+    </body>
+    <script>
+    </html>

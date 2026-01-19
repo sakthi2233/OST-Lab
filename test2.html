@@ -1,0 +1,23 @@
+<html>
+<head><title>dialog box</title></head>
+<script>
+    let name=prompt("Enter your name:");
+    if(name==null){
+        alert("It is not valid");
+    }
+    let age=prompt("Enter your age:");
+    let confirmcheck=confirm("Do you want check eligble for vote?");
+    if(confirmcheck){
+        if(age>=18){
+            alert(name+" you are eligble for vote");
+        }
+        else{
+            alert(name+" you are not eligble for vote");
+        }
+    }
+    console.log("Name: "+name);
+    console.log("Age: "+age);
+    console.log("Confirm: "+confirmcheck);
+</script>
+</html>
+    

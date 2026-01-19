@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title>JavaScript Arrays</title>
+</head>
+<body>
+  <h1>JavaScript Array Processing</h1>
+
+  <script>
+    // 1. Creating Arrays
+
+    let fruits = ["apple", "banana", "orange"];
+    let numbers = [1, 2, 3, 4];
+
+    let users = [
+      { name: "Alice", age: 30 },
+      { name: "Bob", age: 22 }
+    ];
+
+    document.write("Fruits: " + fruits + "<br>");
+    document.write("Numbers: " + numbers + "<br>");
+    document.write("Users:<br>");
+    for (let i = 0; i < users.length; i++) {
+      document.write("Name: " + users[i].name + ", ");
+      document.write("Age: " + users[i].age + "<br>");
+    }
+document.write("<br>");
+    // 2. Looping Through Arrays
+
+    document.write("Loop using forEach:<br>");
+    fruits.forEach(fruit => {
+      document.write(fruit + "<br>");
+    });
+
+    document.write("<br>Loop using for loop:<br>");
+    for (let i = 0; i < fruits.length; i++) {
+      document.write(fruits[i] + "<br>");
+    }
+
+    document.write("<br>Loop using for...of:<br>");
+    for (let fruit of fruits) {
+      document.write(fruit + "<br>");
+    }
+
+document.write("<br>");
+
+    // 3. map(), filter(), reduce()
+
+    let squares = numbers.map(n => n * n);
+    document.write("Squares: " + squares + "<br>");
+
+    let evenNumbers = numbers.filter(n => n % 2 === 0);
+    document.write("Even numbers: " + evenNumbers + "<br>");
+
+    let total = numbers.reduce((sum, n) => sum + n, 0);
+    document.write("Sum: " + total + "<br><br>");
+
+    // 4. Searching in Arrays
+
+    document.write("Has apple? " + fruits.includes("apple") + "<br>");
+    document.write("Index of banana: " + fruits.indexOf("banana") + "<br>");
+
+    let foundFruit = fruits.find(fruit => fruit.startsWith("o"));
+    document.write("Fruit starting with 'o': " + foundFruit + "<br><br>");
+
+    // 5. Adding and Removing Items
+
+    fruits.push("grape");
+    document.write("After push: " + fruits + "<br>");
+
+    fruits.pop();
+    document.write("After pop: " + fruits + "<br>");
+
+    fruits.unshift("mango");
+    document.write("After unshift: " + fruits + "<br>");
+
+    fruits.shift();
+    document.write("After shift: " + fruits + "<br><br>");
+
+    // 6. slice(), splice(), concat()
+
+    let slicedFruits = fruits.slice(1, 3);
+    document.write("Sliced fruits: " + slicedFruits + "<br>");
+
+    fruits.splice(1, 1, "kiwi");
+    document.write("After splice: " + fruits + "<br>");
+
+    let combinedNumbers = [1, 2].concat([3, 4]);
+    document.write("Combined numbers: " + combinedNumbers + "<br>");
+  </script>
+
+</body>
+</html>

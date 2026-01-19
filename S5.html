@@ -1,0 +1,61 @@
+
+<html>
+<head>
+    <title>Functions in JavaScript</title>
+</head> 
+<body>
+
+<script>
+    // 1. Function Declaration
+    function greet(name) {
+        return 'Hello ' + name;
+    }
+    document.write(greet('Shiva') + '<br><br>');
+
+    // 2. Function Expression
+    const addNumbers = function(a, b) {
+        return a + b;
+    };
+    document.write('Sum: ' + addNumbers(5, 3) + '<br><br>');
+
+    // 3. Arrow Function
+    const square = x => x * x;
+    document.write('Square: ' + square(4) + '<br><br>');
+
+    // Function Calling
+    greet('Shiva');
+
+    // Return vs No Return
+    function sayHello() {
+        document.write('Hello World!<br><br>');
+    }
+    sayHello();
+
+    function add(a, b) {
+        return a + b;
+    }
+    document.write('Addition: ' + add(10, 20) + '<br><br>');
+
+    // Callback Function
+    function processUser(name, callback) {
+        callback(name);
+    }
+
+    processUser('Bob', function(name) {
+        console.log('Welcome ' + name);
+    });
+
+    // Anonymous Function
+    setTimeout(function() {
+        console.log('Hello!');
+    }, 1000);
+
+    // IIFE (Immediately Invoked Function Expression)
+    (function() {
+        console.log('Runs immediately!');
+    })();
+</script>
+
+</body>
+</html>
+

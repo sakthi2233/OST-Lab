@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple JavaScript Events</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        #box {
+            width: 250px;
+            height: 120px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 120px;
+            margin-bottom: 20px;
+            border: 2px solid black;
+        }
+
+        input {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body onload="pageLoad()">
+
+<h2 id="text" onmouseover="mouseOver()" onmouseout="mouseOut()">
+    Hover Me
+</h2>
+
+<div id="box" onclick="boxClick()">
+    Click Me
+</div>
+
+<input type="text"
+       placeholder="Type here"
+       onkeydown="keyDown(this)"
+       onkeyup="keyUp(this)">
+
+<script>
+    // Mouse over & out
+    function mouseOver() {
+        document.getElementById("text").style.color = "green";
+    }
+
+    function mouseOut() {
+        document.getElementById("text").style.color = "black";
+    }
+
+    // Mouse click
+    function boxClick() {
+        document.getElementById("box").style.backgroundColor = "yellow";
+    }
+
+    // Keyboard events
+    function keyDown(input) {
+        input.style.backgroundColor = "lightblue";
+    }
+
+    function keyUp(input) {
+        input.style.backgroundColor = "lightgreen";
+    }
+
+    // Page load
+    function pageLoad() {
+        alert("Page Loaded");
+    }
+</script>
+
+</body>
+</html>
