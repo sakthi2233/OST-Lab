@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple DOM Example</title>
+</head>
+
+<body>
+
+    <h1 id="heading">Hello</h1>
+
+    <p id="text">Hello World</p>
+
+    <p class="msg">Hello</p>
+
+    <p>Welcome</p>
+
+    <button onclick="changeText()">Click Me</button>
+
+    <script>
+        // By ID
+        document.getElementById("text").innerHTML = "Hi!";
+
+        // By Class
+        document.getElementsByClassName("msg")[0].style.color = "red";
+
+        // By Tag Name
+        document.getElementsByTagName("p")[0].style.fontSize = "20px";
+
+        // Modern Selectors
+        document.querySelector("#text").style.color = "blue";
+        document.querySelectorAll(".msg")[0].style.background = "yellow";
+
+        // Change Content
+        document.getElementById("heading").innerText = "DOM Manipulation";
+
+        // Change Style
+        document.getElementById("heading").style.color = "green";
+
+        // DOM Event
+        function changeText() {
+            document.getElementById("text").innerHTML = "Button Clicked!";
+        }
+    </script>
+
+</body>
+</html>
+git add .
+git commit -m "Added new files"
+git push
