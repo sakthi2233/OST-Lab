@@ -1,3 +1,3 @@
 <?php
-echo "<h1>This is FOOTER file</h1>";
+echo "<p>THis file is added as the footer in the main document </p>";
 ?>

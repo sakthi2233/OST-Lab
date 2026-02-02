@@ -1,3 +1,3 @@
 <?php
-echo "<p>This is HEADER file</p>";
+echo "<p> This file is added as header in the Main document</p>";
 ?>
