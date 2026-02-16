@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Example</title>
+  <style>
+    .msg {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="text">Hello World</p>
+  <p class="msg">This is a message</p>
+
+  <button id="btn" onclick="changeFormat()">Click Me</button>
+
+  <script>
+    // By ID
+    document.getElementById("text").style.color = "blue";
+
+    // By Class
+    document.getElementsByClassName("msg")[0].style.backgroundColor = "yellow";
+
+    // By Tag Name
+    document.getElementsByTagName("p")[0].style.fontSize = "20px";
+
+    // Modern Selector
+    document.querySelector(".msg").style.color = "red";
+
+    // DOM Event (recommended way)
+      function changeFormat() {
+        document.getElementById("text").innerText = "Button Clicked!";
+      document.getElementById("text").style.color = "green";
+    }
+  </script>
+
+</body>
+</html>
