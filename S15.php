@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (
         preg_match("/^[A-Za-z ]+$/", $name) &&
-        preg_match("/^\w+@\w+\.\w+$/", $email) &&
+        preg_match_all("/^\w+@\w+\.\w+$/", $email) &&
         preg_match("/^[6-9]\d{9}$/", $mobile) &&
         preg_match("/^(?=.[A-Z])(?=.[a-z])(?=.*\d).{8,}$/", $password)
     ) {
@@ -20,8 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!DOCTYPE html>
 <html>
 <body>
 
