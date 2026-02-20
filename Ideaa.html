@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Grocery Ledger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family:Segoe UI;
+    margin:0;
+    background:#f4f6f9;
+    transition:0.3s;
+}
+
+.dark{
+    background:#1e1e1e;
+    color:white;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+h2{
+    text-align:center;
+}
+
+.controls{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+button{
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.add{background:#27ae60;color:white;}
+.save{background:#2980b9;color:white;}
+.print{background:#8e44ad;color:white;}
+.theme{background:#e67e22;color:white;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.dark table{
+    background:#2c2c2c;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#2c3e50;
+    color:white;
+}
+
+input{
+    width:100%;
+    border:none;
+    text-align:center;
+    background:transparent;
+    color:inherit;
+}
+
+.total{
+    text-align:right;
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+    th,td{font-size:12px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>🛒 Smart Grocery Ledger</h2>
+
+<div class="controls">
+    <div>
+        <label>Select Month: </label>
+        <input type="month" id="monthSelect">
+    </div>
+    <div>
+        <button class="add" onclick="addRow()">+ Add Row</button>
+        <button class="save" onclick="saveData()">Save</button>
+        <button class="print" onclick="window.print()">Print</button>
+        <button class="theme" onclick="toggleTheme()">Dark Mode</button>
+    </div>
+</div>
+
+<table id="ledger">
+<tr>
+    <th>S.No</th>
+    <th>Item</th>
+    <th>Price (₹)</th>
+    <th>Qty</th>
+    <th>Total</th>
+</tr>
+</table>
+
+<div class="total">
+Grand Total: ₹ <span id="grandTotal">0</span>
+</div>
+
+</div>
+
+<script>
+
+let count = 0;
+
+function addRow(item="",price="",qty=""){
+    count++;
+    let table=document.getElementById("ledger");
+    let row=table.insertRow();
+    row.innerHTML=`
+    <td>${count}</td>
+    <td><input value="${item}"></td>
+    <td><input type="number" value="${price}" oninput="calculate()"></td>
+    <td><input type="number" value="${qty}" oninput="calculate()"></td>
+    <td class="rowTotal">0</td>
+    `;
+    calculate();
+}
+
+function calculate(){
+    let table=document.getElementById("ledger");
+    let rows=table.rows;
+    let grand=0;
+
+    for(let i=1;i<rows.length;i++){
+        let price=rows[i].cells[2].children[0].value||0;
+        let qty=rows[i].cells[3].children[0].value||0;
+        let total=price*qty;
+        rows[i].cells[4].innerText=total;
+        grand+=Number(total);
+    }
+    document.getElementById("grandTotal").innerText=grand;
+}
+
+function saveData(){
+    let month=document.getElementById("monthSelect").value;
+    if(!month){alert("Select month");return;}
+
+    let table=document.getElementById("ledger");
+    let rows=table.rows;
+    let data=[];
+
+    for(let i=1;i<rows.length;i++){
+        let item=rows[i].cells[1].children[0].value;
+        let price=rows[i].cells[2].children[0].value;
+        let qty=rows[i].cells[3].children[0].value;
+        data.push({item,price,qty});
+    }
+
+    localStorage.setItem(month,JSON.stringify(data));
+    alert("Saved Successfully!");
+}
+
+document.getElementById("monthSelect").addEventListener("change",function(){
+    let month=this.value;
+    document.getElementById("ledger").innerHTML=`
+    <tr>
+        <th>S.No</th>
+        <th>Item</th>
+        <th>Price (₹)</th>
+        <th>Qty</th>
+        <th>Total</th>
+    </tr>`;
+
+    count=0;
+    let saved=localStorage.getItem(month);
+    if(saved){
+        JSON.parse(saved).forEach(d=>{
+            addRow(d.item,d.price,d.qty);
+        });
+    }
+});
+
+function toggleTheme(){
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
+</body>
+</html>
